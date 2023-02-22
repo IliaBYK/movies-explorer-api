@@ -4,14 +4,14 @@ import { log } from 'console';
 import helmet from 'helmet';
 import { errors as celebrateErrors } from 'celebrate';
 import cookieParser from 'cookie-parser';
-import { requestLogger, logerErrors } from './src/middlewares/logger.js';
-import limiter from './src/middlewares/limiter.js';
-import unknownErrorHandler from './src/errorHandlers/unknownErrorHandler.js';
-import errorsHandler from './src/errorHandlers/errorsHandler.js';
-import router from './src/routes/index.router.js';
-import { INTERNAL_SERVER_ERR_CODE } from './src/utils/errorsCodes.js';
-import { INTERNAL_MESSAGE } from './src/utils/constants.js';
-import config from './src/utils/config.js';
+import { requestLogger, logerErrors } from './middlewares/logger.js';
+import limiter from './middlewares/limiter.js';
+import unknownErrorHandler from './errorHandlers/unknownErrorHandler.js';
+import errorsHandler from './errorHandlers/errorsHandler.js';
+import router from './routes/index.router.js';
+import { INTERNAL_SERVER_ERR_CODE } from './utils/errorsCodes.js';
+import { INTERNAL_MESSAGE } from './utils/constants.js';
+import config from './utils/config.js';
 
 const app = express();
 
