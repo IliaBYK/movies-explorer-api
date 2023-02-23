@@ -3,6 +3,7 @@ import http2 from 'node:http2';
 
 export const OK_CODE_STATUS = http2.constants.HTTP_STATUS_OK;
 export const CREATED_CODE = http2.constants.HTTP_STATUS_CREATED;
+export const ACCEPTED_CODE = http2.constants.HTTP_STATUS_ACCEPTED;
 
 export const BAD_REQUEST_ERR_CODE = http2.constants.HTTP_STATUS_BAD_REQUEST;
 export const UNAUTHORIZED_ERR_CODE = http2.constants.HTTP_STATUS_UNAUTHORIZED;

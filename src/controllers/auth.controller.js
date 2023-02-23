@@ -3,7 +3,7 @@ import pkg from 'jsonwebtoken';
 import User from '../models/user.js';
 import UnauthorizedError from '../errors/UnauthorizedError.js';
 import { WRONG_DATA_MESSAGE } from '../utils/constants.js';
-import { OK_CODE_STATUS, CREATED_CODE } from '../utils/errorsCodes.js';
+import { OK_CODE_STATUS, CREATED_CODE, ACCEPTED_CODE } from '../utils/errorsCodes.js';
 
 const { hash, compare } = bundle;
 const { sign } = pkg;
@@ -53,8 +53,7 @@ export async function signin(req, res, next) {
 
 export const logout = async (req, res, next) => {
   try {
-    res.clearCookie('jwt');
-    res.redirect('/signin');
+    res.status(ACCEPTED_CODE).clearCookie('jwt').redirect('/signin');
   } catch (err) {
     next(err);
   }
