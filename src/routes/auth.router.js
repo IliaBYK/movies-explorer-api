@@ -1,22 +1,13 @@
-import { Joi, celebrate } from 'celebrate';
 import { Router } from 'express';
-import { signin, signup } from '../controllers/auth.controller.js';
+import { signin, signup, logout } from '../controllers/auth.controller.js';
+import { signinValidation, signupValidation } from '../middlewares/validation.js';
 
 const router = Router();
 
-router.post('/signin', celebrate({
-  body: Joi.object().keys({
-    email: Joi.string().required().email(),
-    password: Joi.string().required(),
-  }).unknown(true),
-}), signin);
+router.post('/signin', signupValidation, signin);
 
-router.post('/signup', celebrate({
-  body: Joi.object().keys({
-    email: Joi.string().required().email(),
-    password: Joi.string().required(),
-    name: Joi.string().min(2).max(30),
-  }).unknown(true),
-}), signup);
+router.post('/signup', signinValidation, signup);
+
+router.post('/signout', logout);
 
 export default router;

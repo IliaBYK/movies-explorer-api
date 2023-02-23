@@ -5,14 +5,14 @@ export const userValidationMe = celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     name: Joi.string().required().min(2).max(30),
-  }).unknown(true),
+  }),
 });
 
 export const movieCreateValidation = celebrate({
   body: Joi.object().keys({
     country: Joi.string().required(),
     director: Joi.string().required(),
-    duration: Joi.string().required(),
+    duration: Joi.number().required(),
     year: Joi.string().required(),
     description: Joi.string().required(),
     image: Joi.string().required().uri().regex(regExp),
@@ -21,6 +21,21 @@ export const movieCreateValidation = celebrate({
     movieId: Joi.number().required(),
     nameRu: Joi.string().required(),
     nameEn: Joi.string().required(),
+  }),
+});
+
+export const signupValidation = celebrate({
+  body: Joi.object().keys({
+    email: Joi.string().required().email(),
+    password: Joi.string().required(),
+    name: Joi.string().required().min(2).max(30),
+  }),
+});
+
+export const signinValidation = celebrate({
+  body: Joi.object().keys({
+    email: Joi.string().required().email(),
+    password: Joi.string().required(),
   }),
 });
 

@@ -1,5 +1,4 @@
 import { Schema, model, Types } from 'mongoose';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import validator from 'validator';
 
 const movieSchema = new Schema({
@@ -12,7 +11,7 @@ const movieSchema = new Schema({
     required: true,
   },
   duration: {
-    type: String,
+    type: Number,
     required: true,
   },
   year: {

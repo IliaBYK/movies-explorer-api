@@ -14,13 +14,12 @@ export async function getMe(req, res, next) {
   }
 }
 
-export async function updateMe(req, res, next, options) {
+export async function updateMe(req, res, next) {
   try {
-    req.body = options;
-    const user = await userSchema.findByIdAndUpdate(req.user._id, req.body, {
+    const { name, email } = req.body;
+    const user = await userSchema.findByIdAndUpdate(req.user._id, { name, email }, {
       new: true,
       runValidators: true,
-      upsert: true,
     });
     if (user === null) {
       throw new NotFoundError(NOT_FOUND_USER_MESSAGE);

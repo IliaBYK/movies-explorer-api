@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import bundle from 'bcryptjs';
 import pkg from 'jsonwebtoken';
 import User from '../models/user.js';
@@ -11,12 +10,11 @@ const { sign } = pkg;
 
 export async function signup(req, res, next) {
   try {
-    const { name } = req.body;
     let { email, password } = req.body;
     email = email.toLowerCase();
     password = await hash(password, 10);
     let user = await User.create({
-      name, email, password,
+      name: req.body.name, email, password,
     });
     user = JSON.parse(JSON.stringify(user));
     delete user.password;
@@ -47,9 +45,17 @@ export async function signin(req, res, next) {
       .status(OK_CODE_STATUS)
       .send({
         user,
-      })
-      .end();
+      });
   } catch (err) {
     next(err);
   }
 }
+
+export const logout = async (req, res, next) => {
+  try {
+    res.clearCookie('jwt');
+    res.redirect('/signin');
+  } catch (err) {
+    next(err);
+  }
+};

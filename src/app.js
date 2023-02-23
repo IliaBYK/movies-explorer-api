@@ -22,12 +22,12 @@ async function startApp() {
     set('strictQuery', false);
     await connect(config.BASE_PATH);
     app.use(cookieParser());
+    app.use(requestLogger);
+    app.use(logerErrors);
     app.use(limiter);
     app.use(json());
     app.use(helmet());
-    app.use(requestLogger);
     app.use('/', router);
-    app.use(logerErrors);
     app.use(celebrateErrors());
     app.use(errorsHandler);
     app.use(unknownErrorHandler);

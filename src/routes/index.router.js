@@ -11,6 +11,6 @@ const router = Router();
 router.use('/', authRouter);
 router.use('/users/me', auth, userRouter);
 router.use('/movies', auth, movieRouter);
-router.use('*', (req, res, next) => next(new NotFoundError(NOT_FOUND_PAGE_MESSAGE)));
+router.use('*', auth, (req, res, next) => next(new NotFoundError(NOT_FOUND_PAGE_MESSAGE)));
 
 export default router;
