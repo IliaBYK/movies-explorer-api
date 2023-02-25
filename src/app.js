@@ -15,8 +15,6 @@ import config from './utils/config.js';
 
 const app = express();
 
-const { PORT = 4000 } = process.env;
-
 app.use(urlencoded({ extended: true }));
 
 async function startApp() {
@@ -44,6 +42,6 @@ async function startApp() {
 
 startApp();
 
-app.listen(PORT, () => {
-  log(`App has been started on port ${PORT}...`);
+app.listen(config.PORT, () => {
+  log(`App has been started on port ${config.PORT}...`);
 });
