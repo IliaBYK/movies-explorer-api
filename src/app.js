@@ -15,11 +15,6 @@ import config from './utils/config.js';
 
 const app = express();
 
-<<<<<<< HEAD
-=======
-const { PORT = 5000 } = process.env;
-
->>>>>>> baa829af57f59473793b7020326a623419533ba2
 app.use(urlencoded({ extended: true }));
 
 async function startApp() {
