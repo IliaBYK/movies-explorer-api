@@ -15,7 +15,7 @@ import config from './utils/config.js';
 
 const app = express();
 
-const { PORT = 7000 } = process.env;
+const { PORT = 4000 } = process.env;
 
 app.use(urlencoded({ extended: true }));
 
