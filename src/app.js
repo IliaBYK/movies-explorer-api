@@ -1,4 +1,4 @@
-import express, { json, urlencoded } from 'express';
+import express, { json } from 'express';
 import { set, connect } from 'mongoose';
 import { log } from 'console';
 import helmet from 'helmet';
@@ -15,14 +15,13 @@ const app = express();
 
 set('strictQuery', false);
 await connect(config.BASE_PATH);
-app.use(urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(requestLogger);
-app.use(logerErrors);
 app.use(limiter);
-app.use(json());
 app.use(helmet());
+app.use(json());
 app.use('/', router);
+app.use(logerErrors);
 app.use(celebrateErrors());
 app.use(errorsHandler);
 app.use(unknownErrorHandler);
