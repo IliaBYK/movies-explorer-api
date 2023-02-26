@@ -2,11 +2,11 @@
   "name": "movies-explorer-api",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/app.js",
+  "main": "app.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon",
-    "start": "node .",
+    "dev": "nodemon app.js",
+    "start": "node app.js",
     "lint": "npx eslint ."
   },
   "repository": {
