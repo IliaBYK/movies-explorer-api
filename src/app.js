@@ -14,7 +14,11 @@ import config from './utils/config.js';
 const app = express();
 
 set('strictQuery', false);
-await connect(config.BASE_PATH);
+async function connection() {
+  await connect(config.BASE_PATH);
+}
+connection();
+
 app.use(cookieParser());
 app.use(requestLogger);
 app.use(limiter);
