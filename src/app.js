@@ -15,14 +15,11 @@ import config from './utils/config.js';
 
 const app = express();
 
-const { PORT = 4000 } = process.env;
-
-app.use(urlencoded({ extended: true }));
-
 async function startApp() {
   try {
     set('strictQuery', false);
     await connect(config.BASE_PATH);
+    app.use(urlencoded({ extended: true }));
     app.use(cookieParser());
     app.use(requestLogger);
     app.use(logerErrors);
@@ -44,6 +41,6 @@ async function startApp() {
 
 startApp();
 
-app.listen(PORT, () => {
-  log(`App has been started on port ${PORT}...`);
+app.listen(config.PORT, () => {
+  log(`App has been started on port ${config.PORT}...`);
 });
