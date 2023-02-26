@@ -34,7 +34,7 @@ export async function signin(req, res, next) {
       throw new UnauthorizedError(WRONG_DATA_MESSAGE);
     }
 
-    const token = sign({ _id: user._id }, config.JWT_SECRET, { expiresIn: '7d' });
+    const token = sign({ _id: user._id }, config.JWT_KEY, { expiresIn: '7d' });
     user = JSON.parse(JSON.stringify(user));
     delete user.password;
 
