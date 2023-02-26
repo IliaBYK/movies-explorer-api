@@ -8,7 +8,7 @@ import { NOT_FOUND_PAGE_MESSAGE } from '../utils/constants.js';
 
 const router = Router();
 
-router.use('', authRouter);
+router.use('/', authRouter);
 router.use('/users/me', auth, userRouter);
 router.use('/movies', auth, movieRouter);
 /* router.use('*', (req, res, next) => next(new NotFoundError(NOT_FOUND_PAGE_MESSAGE))); */
