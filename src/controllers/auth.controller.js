@@ -43,9 +43,7 @@ export async function signin(req, res, next) {
         httpOnly: true,
       })
       .status(OK_CODE_STATUS)
-      .send({
-        user,
-      });
+      .send({ user });
   } catch (err) {
     next(err);
   }

@@ -4,9 +4,9 @@ import { signinValidation, signupValidation } from '../middlewares/validation.js
 
 const router = Router();
 
-router.post('/signin', signinValidation, signin);
-
 router.post('/signup', signupValidation, signup);
+
+router.post('/signin', signinValidation, signin);
 
 router.post('/signout', logout);
 
