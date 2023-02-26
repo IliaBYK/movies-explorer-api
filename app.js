@@ -26,7 +26,7 @@ app.use('/', router);
 app.use(logerErrors);
 app.use(celebrateErrors());
 app.use(errorsHandler);
-// app.use(unknownErrorHandler);
+app.use(unknownErrorHandler);
 
 app.listen(config.PORT, () => {
   log(`App has been started on port ${config.PORT}...`);
