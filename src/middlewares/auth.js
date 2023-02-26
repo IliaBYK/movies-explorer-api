@@ -1,6 +1,7 @@
 import { verify } from 'jsonwebtoken';
 import UnauthorizedError from '../errors/UnauthorizedError.js';
 import { UNAUTHORIZED_MESSAGE } from '../utils/constants.js';
+import config from '../utils/config.js';
 
 export default function auth(req, res, next) {
   try {
@@ -10,7 +11,7 @@ export default function auth(req, res, next) {
       next(new UnauthorizedError(UNAUTHORIZED_MESSAGE));
       return;
     }
-    const payload = verify(token, process.env.JWT_SECRET);
+    const payload = verify(token, config.JWT_KEY);
     req.user = payload;
   } catch (err) {
     next(new UnauthorizedError(UNAUTHORIZED_MESSAGE));
