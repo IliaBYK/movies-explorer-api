@@ -52,7 +52,7 @@ export async function signin(req, res, next) {
 
 export const logout = async (req, res, next) => {
   try {
-    res.status(ACCEPTED_CODE).clearCookie('jwt').redirect('/signin');
+    res.status(ACCEPTED_CODE).clearCookie('jwt');
   } catch (err) {
     next(err);
   }
