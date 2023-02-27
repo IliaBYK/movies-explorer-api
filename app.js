@@ -28,6 +28,6 @@ app.use(celebrateErrors());
 app.use(errorsHandler);
 app.use(unknownErrorHandler);
 
-//app.listen(config.PORT, () => {
-  //log(`App has been started on port ${config.PORT}...`);
-//});
+app.listen(config.PORT, () => {
+  log(`App has been started on port ${config.PORT}...`);
+});
