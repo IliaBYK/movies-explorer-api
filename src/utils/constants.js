@@ -8,3 +8,4 @@ export const NOT_FOUND_PAGE_MESSAGE = 'Страница не найдена';
 export const NOT_FOUND_USER_MESSAGE = 'Пользователь не найден';
 export const FORBIDDEN_MESSAGE = 'Вы не можете удалить чужой фильм';
 export const INTERNAL_MESSAGE = 'На сервере произошла ошибка';
+export const LOGOUT_MESSAGE = 'Вы успешно вышли из системы!';

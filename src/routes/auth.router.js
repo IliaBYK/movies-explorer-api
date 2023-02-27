@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { signin, signup, logout } from '../controllers/auth.controller.js';
+import { signin, signup, signout } from '../controllers/auth.controller.js';
 import auth from '../middlewares/auth.js';
 import { signinValidation, signupValidation } from '../middlewares/validation.js';
 
@@ -9,6 +9,6 @@ router.post('/signup', signupValidation, signup);
 
 router.post('/signin', signinValidation, signin);
 
-router.post('/signout', auth, logout);
+router.post('/signout', auth, signout);
 
 export default router;

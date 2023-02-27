@@ -2,7 +2,7 @@ import bundle from 'bcryptjs';
 import pkg from 'jsonwebtoken';
 import User from '../models/user.js';
 import UnauthorizedError from '../errors/UnauthorizedError.js';
-import { WRONG_DATA_MESSAGE } from '../utils/constants.js';
+import { WRONG_DATA_MESSAGE, LOGOUT_MESSAGE } from '../utils/constants.js';
 import config from '../utils/config.js';
 import { OK_CODE_STATUS, CREATED_CODE, ACCEPTED_CODE } from '../utils/errorsCodes.js';
 
@@ -50,9 +50,11 @@ export async function signin(req, res, next) {
   }
 }
 
-export const logout = async (req, res, next) => {
+export const signout = async (req, res, next) => {
   try {
-    res.status(ACCEPTED_CODE).clearCookie('jwt');
+    res.status(ACCEPTED_CODE).clearCookie('jwt').send({
+      message: LOGOUT_MESSAGE,
+    });
   } catch (err) {
     next(err);
   }
