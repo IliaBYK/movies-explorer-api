@@ -50,7 +50,7 @@ export async function signin(req, res, next) {
   }
 }
 
-export const signout = async (req, res, next) => {
+export async function signout(req, res, next) {
   try {
     res.status(ACCEPTED_CODE).clearCookie('jwt').send({
       message: LOGOUT_MESSAGE,
@@ -58,4 +58,4 @@ export const signout = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-};
+}
