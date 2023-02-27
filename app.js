@@ -4,6 +4,7 @@ import { log } from 'console';
 import helmet from 'helmet';
 import { errors as celebrateErrors } from 'celebrate';
 import cookieParser from 'cookie-parser';
+import { cors } from 'cors';
 import { requestLogger, logerErrors } from './src/middlewares/logger.js';
 import limiter from './src/middlewares/limiter.js';
 import unknownErrorHandler from './src/errorHandlers/unknownErrorHandler.js';
@@ -12,6 +13,22 @@ import router from './src/routes/index.router.js';
 import config from './src/utils/config.js';
 
 const app = express();
+
+const whitelist = [
+  'http://localhost:4000',
+  'http://api.bitfilms.ibyk.nomoredomains.work',
+  'https://api.bitfilms.ibyk.nomoredomains.work',
+];
+const corsOptions = {
+  origin(origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+};
 
 set('strictQuery', false);
 
@@ -22,6 +39,7 @@ app.use(requestLogger);
 app.use(limiter);
 app.use(helmet());
 app.use(json());
+app.use(cors(corsOptions));
 app.use('/', router);
 app.use(logerErrors);
 app.use(celebrateErrors());
