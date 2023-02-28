@@ -4,7 +4,8 @@ import { log } from 'console';
 import helmet from 'helmet';
 import { errors as celebrateErrors } from 'celebrate';
 import cookieParser from 'cookie-parser';
-import cors from 'cors';
+/* import { CorsOptions } from 'cors'; */
+import pkg from 'cors';
 import { requestLogger, logerErrors } from './src/middlewares/logger.js';
 import limiter from './src/middlewares/limiter.js';
 import unknownErrorHandler from './src/errorHandlers/unknownErrorHandler.js';
@@ -39,7 +40,7 @@ app.use(requestLogger);
 app.use(limiter);
 app.use(helmet());
 app.use(json());
-app.use(cors(corsOptions));
+app.use(pkg(corsOptions));
 app.use('/', router);
 app.use(logerErrors);
 app.use(celebrateErrors());
