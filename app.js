@@ -7,7 +7,7 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import { requestLogger, logerErrors } from './src/middlewares/logger.js';
 import limiter from './src/middlewares/limiter.js';
-import corsOptions from './src/middlewares/cors.js';
+import corsOptions from './src/middlewares/corsOptions.js';
 import unknownErrorHandler from './src/errorHandlers/unknownErrorHandler.js';
 import errorsHandler from './src/errorHandlers/errorsHandler.js';
 import router from './src/routes/index.router.js';
