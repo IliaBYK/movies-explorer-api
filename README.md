@@ -13,5 +13,5 @@
 `npm run start` — запускает сервер   
 `npm run dev` — запускает сервер с hot-reload
 
-## Домен <https://bitfilms.ibyk.nomoredomainsclub.ru>
+## Домен <https://api.bitfilms.ibyk.nomoredomains.work>
 ## Ссылка на репозиторий <https://github.com/IliaBYK/express-mesto-gha>
