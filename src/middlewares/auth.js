@@ -5,8 +5,8 @@ import config from '../utils/config.js';
 
 export default function auth(req, res, next) {
   try {
-    const { cookies } = req;
-    const { jwt: token } = cookies;
+    const { authorization } = req.headers;
+    const token = authorization.replace('Bearer ', '');
     if (!token) {
       next(new UnauthorizedError(UNAUTHORIZED_MESSAGE));
       return;
