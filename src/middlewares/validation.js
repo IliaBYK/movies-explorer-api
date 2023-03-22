@@ -18,7 +18,7 @@ export const movieCreateValidation = celebrate({
     image: Joi.string().required().uri().regex(regExp),
     trailerLink: Joi.string().required().uri().regex(regExp),
     thumbnail: Joi.string().required().uri().regex(regExp),
-    movieId: Joi.number().required(),
+    id: Joi.number().required(),
     nameRU: Joi.string().required(),
     nameEN: Joi.string().required(),
   }),

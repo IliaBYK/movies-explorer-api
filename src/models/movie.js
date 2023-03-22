@@ -51,7 +51,7 @@ const movieSchema = new Schema({
     required: true,
     ref: 'user',
   },
-  movieId: {
+  id: {
     type: Number,
     required: true,
   },
