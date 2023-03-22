@@ -14,7 +14,7 @@ import config from './src/utils/config.js';
 
 const app = express();
 
-const whitelist = [
+/* const whitelist = [
   'http://localhost:3000',
   'http://bitfilms.ibyk.nomoredomainsclub.ru',
   'https://bitfilms.ibyk.nomoredomainsclub.ru',
@@ -28,7 +28,7 @@ const corsOptions = {
     }
   },
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-};
+}; */
 
 set('strictQuery', false);
 
