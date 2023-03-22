@@ -14,7 +14,7 @@ import config from './src/utils/config.js';
 
 const app = express();
 
-/* const whitelist = [
+const whitelist = [
   'http://localhost:3000',
   'http://bitfilms.ibyk.nomoredomainsclub.ru',
   'https://bitfilms.ibyk.nomoredomainsclub.ru',
@@ -28,7 +28,7 @@ const corsOptions = {
     }
   },
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-}; */
+};
 
 set('strictQuery', false);
 
@@ -39,12 +39,12 @@ app.use(requestLogger);
 app.use(limiter);
 app.use(helmet());
 app.use(json());
-/* app.use(cors(corsOptions)); */
+app.use(cors(corsOptions));
 app.use('/', router);
 app.use(logerErrors);
 app.use(celebrateErrors());
 app.use(errorsHandler);
-/* app.use(unknownErrorHandler); */
+app.use(unknownErrorHandler);
 
 app.listen(config.PORT, () => {
   log(`App has been started on port ${config.PORT}...`);
