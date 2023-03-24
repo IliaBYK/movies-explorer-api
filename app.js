@@ -27,12 +27,7 @@ const corsOptions = {
       callback(new Error('Not allowed by CORS'));
     }
   },
-  /* methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', */
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS',
-    'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers, Authorization, X-Requested-With',
-  },
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 };
 
 set('strictQuery', false);
