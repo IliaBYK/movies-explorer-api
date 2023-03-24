@@ -16,6 +16,7 @@ const app = express();
 
 const whitelist = [
   'http://localhost:3000',
+  'https://localhost:3000',
   'http://bitfilms.ibyk.nomoredomainsclub.ru',
   'https://bitfilms.ibyk.nomoredomainsclub.ru',
 ];
