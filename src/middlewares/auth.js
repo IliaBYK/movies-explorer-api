@@ -7,9 +7,8 @@ export default function auth(req, res, next) {
   try {
     const { authorization } = req.headers;
     const token = authorization.replace('Bearer ', '');
-    if (!token) {
-      next(new UnauthorizedError(UNAUTHORIZED_MESSAGE));
-      return;
+    if (!authorization) {
+      throw new UnauthorizedError(UNAUTHORIZED_MESSAGE);
     }
     const payload = verify(token, config.JWT_KEY);
     req.user = payload;
