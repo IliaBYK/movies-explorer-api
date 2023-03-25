@@ -29,6 +29,7 @@ const corsOptions = {
     }
   },
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  headers: { 'Access-Control-Allow-Origin': whitelist },
 };
 
 set('strictQuery', false);
