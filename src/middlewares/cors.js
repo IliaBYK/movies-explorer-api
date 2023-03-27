@@ -4,7 +4,7 @@ const whitelist = [
   'http://bitfilms.ibyk.nomoredomainsclub.ru',
   'https://bitfilms.ibyk.nomoredomainsclub.ru',
 ];
-/* const corsOptions = {
+const corsOptions = {
   origin: (origin, callback) => {
     if (whitelist.indexOf(origin) !== -1) {
       callback(null, true);
@@ -13,9 +13,9 @@ const whitelist = [
     }
   },
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-}; */
+};
 
-const corsOptions = ((req, res, next) => {
+/* const corsOptions = ((req, res, next) => {
   const { origin } = req.headers;
   const { method } = req;
   if (whitelist.includes(origin)) {
@@ -30,6 +30,6 @@ const corsOptions = ((req, res, next) => {
   }
 
   return next();
-});
+}); */
 
 export default corsOptions;
