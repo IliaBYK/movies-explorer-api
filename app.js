@@ -20,14 +20,15 @@ const whitelist = [
   'http://bitfilms.ibyk.nomoredomainsclub.ru',
   'https://bitfilms.ibyk.nomoredomainsclub.ru',
 ];
-const corsOptionsDelegate = (req, callback) => {
-  let corsOptions;
-  if (whitelist.indexOf(req.header('Origin')) !== -1) {
-    corsOptions = { origin: true };
-  } else {
-    corsOptions = { origin: false };
-  }
-  callback(null, corsOptions);
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 };
 
 set('strictQuery', false);
@@ -39,7 +40,7 @@ app.use(requestLogger);
 app.use(limiter);
 app.use(helmet());
 app.use(json());
-app.use(cors(corsOptionsDelegate));
+app.use(cors(corsOptions));
 app.use('/', router);
 app.use(logerErrors);
 app.use(celebrateErrors());
