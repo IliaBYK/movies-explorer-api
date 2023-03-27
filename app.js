@@ -1,5 +1,5 @@
 import express, { json } from 'express';
-import { set /* connect */ } from 'mongoose';
+import { set, connect } from 'mongoose';
 import { log } from 'console';
 import helmet from 'helmet';
 import { errors as celebrateErrors } from 'celebrate';
@@ -33,7 +33,7 @@ const corsOptions = {
 
 set('strictQuery', false);
 
-/* await connect(config.BASE_PATH); */
+await connect(config.BASE_PATH);
 
 app.use(cookieParser());
 app.use(requestLogger);
