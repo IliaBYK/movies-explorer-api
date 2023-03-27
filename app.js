@@ -4,7 +4,7 @@ import { log } from 'console';
 import helmet from 'helmet';
 import { errors as celebrateErrors } from 'celebrate';
 import cookieParser from 'cookie-parser';
-import cors from 'cors';
+/* import cors from 'cors'; */
 import { requestLogger, logerErrors } from './src/middlewares/logger.js';
 import limiter from './src/middlewares/limiter.js';
 import unknownErrorHandler from './src/errorHandlers/unknownErrorHandler.js';
@@ -14,7 +14,7 @@ import config from './src/utils/config.js';
 
 const app = express();
 
-const whitelist = [
+/* const whitelist = [
   'http://localhost:3000',
   'http://bitfilms.ibyk.nomoredomainsclub.ru',
   'https://bitfilms.ibyk.nomoredomainsclub.ru',
@@ -28,7 +28,7 @@ const corsOptions = {
     }
   },
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-};
+}; */
 
 set('strictQuery', false);
 
@@ -39,7 +39,7 @@ app.use(requestLogger);
 app.use(limiter);
 app.use(helmet());
 app.use(json());
-app.use(cors(corsOptions));
+/* app.use(cors(corsOptions)); */
 app.use('/', router);
 app.use(logerErrors);
 app.use(celebrateErrors());
