@@ -7,29 +7,13 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import { requestLogger, logerErrors } from './src/middlewares/logger.js';
 import limiter from './src/middlewares/limiter.js';
+import corsOptions from './src/middlewares/cors.js';
 import unknownErrorHandler from './src/errorHandlers/unknownErrorHandler.js';
 import errorsHandler from './src/errorHandlers/errorsHandler.js';
 import router from './src/routes/index.router.js';
 import config from './src/utils/config.js';
 
 const app = express();
-
-const whitelist = [
-  'http://localhost:3000',
-  'https://localhost:3000',
-  'http://bitfilms.ibyk.nomoredomainsclub.ru',
-  'https://bitfilms.ibyk.nomoredomainsclub.ru',
-];
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-};
 
 set('strictQuery', false);
 
