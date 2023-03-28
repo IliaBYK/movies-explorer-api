@@ -34,11 +34,11 @@ set('strictQuery', false);
 
 await connect(config.BASE_PATH);
 
+app.use(json());
 app.use(cookieParser());
 app.use(requestLogger);
 app.use(limiter);
 app.use(helmet());
-app.use(json());
 app.use(cors(corsOptions));
 app.use('/', router);
 app.use(logerErrors);
