@@ -20,20 +20,26 @@ const whitelist = [
   'https://bitfilms.ibyk.nomoredomainsclub.ru',
 ];
 
-const options = cors.CorsOptions({
-  origin: whitelist,
-});
+const corsOptionsDelegate = (req, callback) => {
+  let corsOptions;
+  if (whitelist.indexOf(req.header('Origin')) !== -1) {
+    corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
+  } else {
+    corsOptions = { origin: false }; // disable CORS for this request
+  }
+  callback(null, corsOptions); // callback expects two parameters: error and options
+};
 
 set('strictQuery', false);
 
 await connect(config.BASE_PATH);
 
 app.use(json());
+app.use(cors(corsOptionsDelegate));
 app.use(cookieParser());
 app.use(requestLogger);
 app.use(limiter);
 app.use(helmet());
-app.use(cors(options));
 app.use('/', router);
 app.use(logerErrors);
 app.use(celebrateErrors());
