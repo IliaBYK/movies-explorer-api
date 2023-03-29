@@ -4,6 +4,7 @@ import { log } from 'console';
 import helmet from 'helmet';
 import { errors as celebrateErrors } from 'celebrate';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 import { requestLogger, logerErrors } from './src/middlewares/logger.js';
 import limiter from './src/middlewares/limiter.js';
 import unknownErrorHandler from './src/errorHandlers/unknownErrorHandler.js';
@@ -13,15 +14,26 @@ import config from './src/utils/config.js';
 
 const app = express();
 
+const whitelist = [
+  'http://localhost:3000',
+  'http://bitfilms.ibyk.nomoredomainsclub.ru',
+  'https://bitfilms.ibyk.nomoredomainsclub.ru',
+];
+
+const options = cors.CorsOptions({
+  origin: whitelist,
+});
+
 set('strictQuery', false);
 
 await connect(config.BASE_PATH);
 
+app.use(json());
 app.use(cookieParser());
 app.use(requestLogger);
 app.use(limiter);
 app.use(helmet());
-app.use(json());
+app.use(cors(options));
 app.use('/', router);
 app.use(logerErrors);
 app.use(celebrateErrors());

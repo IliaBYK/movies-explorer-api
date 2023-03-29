@@ -40,7 +40,7 @@ export const signinValidation = celebrate({
 });
 
 export const idValidation = celebrate({
-  params: Joi.object().keys({
-    id: Joi.string().required().length(24).hex(),
-  }),
+  params: {
+    id: Joi.string().length(24).hex(),
+  },
 });

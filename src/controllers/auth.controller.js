@@ -39,12 +39,8 @@ export async function signin(req, res, next) {
     delete user.password;
 
     res
-      .cookie('jwt', token, {
-        maxAge: 3600000 * 24 * 7,
-        httpOnly: true,
-      })
       .status(OK_CODE_STATUS)
-      .send({ user });
+      .send({ token });
   } catch (err) {
     next(err);
   }
