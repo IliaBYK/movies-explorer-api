@@ -34,7 +34,7 @@ export async function deleteMovie(req, res, next) {
       throw new ForbiddenError(FORBIDDEN_MESSAGE);
     }
     await movie.delete();
-    res.send(movie, movie.owner._id.toString(), req.user._id);
+    res.send(movie.owner._id.toString(), req.user._id);
   } catch (err) {
     next(err);
   }
