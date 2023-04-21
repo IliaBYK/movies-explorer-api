@@ -30,7 +30,7 @@ export async function deleteMovie(req, res, next) {
     if (movie === null) {
       throw new NotFoundError(NOT_FOUND_MOVIE_MESSAGE);
     }
-    if (movie.owner._id/* .toString() */ !== req.user._id) {
+    if (movie.owner._id.toString() !== req.user._id) {
       throw new ForbiddenError(FORBIDDEN_MESSAGE);
     }
     await movie.delete();
