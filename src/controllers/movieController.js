@@ -1,8 +1,11 @@
+import { Console } from 'winston/lib/winston/transports/index.js';
 import Movie from '../models/movie.js';
 import NotFoundError from '../errors/NotFoundError.js';
 import ForbiddenError from '../errors/ForbiddenError.js';
 import { NOT_FOUND_MOVIE_MESSAGE, FORBIDDEN_MESSAGE } from '../utils/constants.js';
 import { CREATED_CODE } from '../utils/errorsCodes.js';
+
+const console = new Console();
 
 export async function getMovies(req, res, next) {
   try {
