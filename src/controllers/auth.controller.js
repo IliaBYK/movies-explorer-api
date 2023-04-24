@@ -40,7 +40,7 @@ export async function signin(req, res, next) {
 
     res
       .status(OK_CODE_STATUS)
-      .send({ token });
+      .send({ token, user });
   } catch (err) {
     next(err);
   }
